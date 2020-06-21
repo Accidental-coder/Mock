@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+<title>Mock Page HTML5</title>
+<meta charset="utf-8">
+</head>
+<link rel="stylesheet" href="mock.css">
+<div class="content">  
+    
+      <h3>Employee Data Entry Form</h3>
+      <h4>Checkout at our <a href="https://www.google.com/">FAQ</a> page</h4>
+      <form id="form1">
+            <label for="Name">Name</label><br/>
+            <input placeholder="Name" id="Name" type="text" tabindex="1" autofocus><br/>
+            <label for="Employeeid">Employee ID</label>
+            <input placeholder="Employee ID" id="Employee_id" type="text" tabindex="2" >
+        <br/>
+            <label for="Date of Birth">Date of Birth</label> <input placeholder="Date of Birth" type="date" tabindex="3" id="DOB" >
+        <br/>
+            <label for="URL">Enter your favorite URL</label> <input placeholder="URL" type="url" tabindex="3" id="url">
+        <br/>
+            <label for="Gender">Gender</label>
+            <select id="gender" name="Gender" tabindex="4">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        <br/><br/>
+        <button name="submit" type="submit" id="submit" onclick="save(); return false">Submit</button>
+        </form>
+    <br/>
+    <button onClick="window.location.reload();">Refresh Page</button>
+   <br/>
+  </div>
+  <fieldset class="f1">
+    <legend>Data you Entered</legend>
+    <div id="output2"> </div><br/>
+    <div id="output3"> </div><br/>
+    <div id="output7"> </div><br/>
+    <div id="output4"> </div><br/>
+    <div id="output5"> </div><br/>
+    <div id="output6"> </div><br/>
+</fieldset>
+<script src="jquery-3.5.1.js"></script>
+<script>
+document.cookie = "username=Aman";
+
+localStorage.setItem("User_id","Aman@Barclays.com");
+localStorage.setItem("Password","Secure_Password");
+
+function save(){
+    var name=($("#Name").val()).escape();
+    var Employee_id_NO_jQuery=$("#Employee_id").val();
+    var Employee_id_jQuery=$("#Employee_id").val();
+    var dob=$("#DOB").val();
+    var url=($("#url").val()).escape();
+    var gender=$("#gender").val();
+
+    $("#output2").text(" Name: " +name);
+    $("#output3").text(" ID (WITHOUT jquery): " + Employee_id_jQuery);
+    document.getElementById("output7").innerHTML= " ID: (jquery): " +  Employee_id_NO_jQuery;
+    $("#output4").text(" DOB: " + dob);
+    $("#output5").text(" URL: " + url);
+    $("#output6").text(" Gender:  " + gender);
+}
+
+String.prototype.escape = function() {
+    var tagsToReplace = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;'
+    };
+    return this.replace(/[&<>]/g, function(x) {return tagsToReplace[x];} );
+};
+
+</script>
+</html>

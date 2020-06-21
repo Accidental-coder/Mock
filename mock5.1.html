@@ -36,6 +36,7 @@
     <div id="output2"> </div><br/>
     <div id="output3"> </div><br/>
     <div id="output7"> </div><br/>
+    <div id="output8"> </div><br/>
     <div id="output4"> </div><br/>
     <div id="output5"> </div><br/>
     <div id="output6"> </div><br/>
@@ -48,16 +49,18 @@ localStorage.setItem("User_id","Aman@Barclays.com");
 localStorage.setItem("Password","Secure_Password");
 
 function save(){
-    var name=($("#Name").val()).escape();
+    var name=(document.getElementById("Name").value).escape();
     var Employee_id_NO_jQuery=$("#Employee_id").val();
     var Employee_id_jQuery=$("#Employee_id").val();
+    var Em=(Employee_id_jQuery).escape();
     var dob=$("#DOB").val();
     var url=($("#url").val()).escape();
     var gender=$("#gender").val();
 
-    $("#output2").text(" Name: " +name);
+    document.getElementById("output2").innerHTML=" Name: " + name;
     $("#output3").text(" ID (WITHOUT jquery): " + Employee_id_jQuery);
-    document.getElementById("output7").innerHTML= " ID: (jquery): " +  Employee_id_NO_jQuery;
+    document.getElementById("output8").innerHTML= " ID (using Regex Expression): " +  Em;
+    document.getElementById("output7").innerHTML= " ID (jquery): " +  Employee_id_NO_jQuery;
     $("#output4").text(" DOB: " + dob);
     $("#output5").text(" URL: " + url);
     $("#output6").text(" Gender:  " + gender);
